@@ -8,14 +8,18 @@ const actions = {
       let oldProduct = state.cartList.find(k => product.iid === k.iid);
 
       // 2.判断数组中是否有商品，oldProduct保存的是指针
-      if(oldProduct) {
-        commit(ADD_COUNTER, oldProduct);
-        resolve('当前的商品数量+1')
+      if(state.isAutnenticated) {
+        if(oldProduct) {
+          commit(ADD_COUNTER, oldProduct);
+          resolve('当前的商品数量+1')
+        } else {
+          product.count = 1;
+          product.checked = true;
+          commit(ADD_TO_CART, product);
+          resolve('已经加入购物车')
+        }
       } else {
-        product.count = 1;
-        product.checked = true;
-        commit(ADD_TO_CART, product);
-        resolve('已经加入购物车')
+        resolve('您还未登录')
       }
     })
   },

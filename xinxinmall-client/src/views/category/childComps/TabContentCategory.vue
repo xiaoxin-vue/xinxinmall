@@ -28,7 +28,7 @@ export default {
   display: flex;
   /* 开启弹性盒子自动换行 */
   flex-wrap: wrap;
-  /* 盒子中的项目均等分 */
+  /* 盒子中的水平方向空间均等分并且每个项目两侧的间隔相等 */
   justify-content: space-around;
 
   padding: 2px 10px;

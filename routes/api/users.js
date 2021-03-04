@@ -36,7 +36,7 @@ router.post('/register', (req, res) =>{
           bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(newUser.password, salt, function(err, hash) {
                 if(err) throw err
-                newUser.password =hash
+                newUser.password = hash
                 // 将注册信息保存到User01数据库中的user集合中
                 newUser.save()
                        .then(user => res.json(user))
@@ -79,7 +79,7 @@ router.post('/login', (req, res) => {
                                 token: 'Bearer ' + token
                               })
                             })
-                          } else{
+                          } else {
                             return res.status(404).json({msg: '密码错误，请重新输入。'})
                           }
                         })
