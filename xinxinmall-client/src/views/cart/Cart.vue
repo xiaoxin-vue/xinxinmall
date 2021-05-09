@@ -53,8 +53,10 @@ export default {
     ])
   },
   mounted() {
+    // location.reload();
+    console.log(localStorage.eleToken)
     this.eleToken = localStorage.eleToken
-  },
+  }
 }
 </script>
 

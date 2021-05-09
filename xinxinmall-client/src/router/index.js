@@ -9,6 +9,8 @@ const Detail = () => import('views/detail/Detail')
 const Login = () => import('views/login/Login')
 const Register = () => import('views/register/Register')
 const notFound = () => import('views/notFound/NotFound')
+const Search = () => import('views/search/Search')
+const Wall = () => import('views/wall/Wall')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -47,6 +49,14 @@ const routes = [
   {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/search',
+    component: Search
+  },
+  {
+    path: '/wall',
+    component: Wall
   },
   {
     path: '*',

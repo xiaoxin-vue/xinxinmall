@@ -1,0 +1,93 @@
+{
+  "id": "2424425",
+  "name": "1",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6536712",
+      "name": "列表",
+      "font_class": "liebiao1",
+      "unicode": "e659",
+      "unicode_decimal": 58969
+    },
+    {
+      "icon_id": "2593562",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "2155527",
+      "name": "定位",
+      "font_class": "dingwei",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "5732759",
+      "name": "定位",
+      "font_class": "dingwei1",
+      "unicode": "ec32",
+      "unicode_decimal": 60466
+    },
+    {
+      "icon_id": "10715415",
+      "name": "定位",
+      "font_class": "dingwei2",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "19986661",
+      "name": "箭头-上",
+      "font_class": "jiantou-shang",
+      "unicode": "e7c7",
+      "unicode_decimal": 59335
+    },
+    {
+      "icon_id": "2402040",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "17575620",
+      "name": "x",
+      "font_class": "x",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "15838502",
+      "name": "loading",
+      "font_class": "loading1",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "13519434",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "1315275",
+      "name": "Loading",
+      "font_class": "91jiazai",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "1010084",
+      "name": "登录",
+      "font_class": "denglu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    }
+  ]
+}

@@ -63,6 +63,7 @@ export default {
       // this.$router.go(-1);
     },
     submitForm(formName) {
+      this.$bus.$emit('userLogin', this.loginUser)
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios.post('/api/users/login', this.loginUser)
@@ -76,10 +77,6 @@ export default {
                        // 把token存储到localStorage中的eleToken
                        localStorage.setItem('eleToken', token)
                        this.$router.push('/profile')
-                       // 强制刷新页面
-                       setTimeout(() => {
-                         location.reload();
-                       }, 500);
                      })
                      .catch(err => {
                        throw err

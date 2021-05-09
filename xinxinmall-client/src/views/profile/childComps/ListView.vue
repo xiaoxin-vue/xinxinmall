@@ -73,6 +73,7 @@ export default {
   top: -1px;
   width: 90%;
   font-size: 15px;
+  color: #333;
 }
 
 .list-item .item-img{

@@ -5,7 +5,7 @@
     </nav-bar>
 
     <!-- 用户信息 -->
-    <user-info :userInfo="user"/>
+    <user-info :userInfo="userInfoName || user"/>
 
     <!-- 账户信息 -->
     <account-info/>
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      userInfo: {}
+      userInfoName: {}
     }
   },
   created() {
@@ -55,6 +55,16 @@ export default {
       'isAutnenticated',
       'user'
     ])
+  },
+  mounted() {
+    this.$bus.$on('userLogin', (msg) => {
+      this.$axios.post('/api/users/login', msg)
+                 .then(res => {
+                   console.log(res)
+                   const decoded = jwt_decode(res.data.token)
+                   this.userInfoName = decoded
+                 })
+    })
   },
   methods: {
     exit() {
