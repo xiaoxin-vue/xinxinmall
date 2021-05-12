@@ -1,34 +1,34 @@
 <template>
   <div class="list-view">
-    <div class="list-item">
+    <div class="list-item" @click="orderTo">
       <div class="item-img">
         <img src="~assets/img/profile/order.svg" alt="">
       </div>
       <span class="item-info">{{listData[0]}}</span>
       <i class="item-icon"></i>
     </div>
-    <div class="list-item">
+    <div class="list-item" @click="integralClick">
       <div class="item-img">
         <img src="~assets/img/profile/integral.svg" alt="">
       </div>
       <span class="item-info">{{listData[1]}}</span>
       <i class="item-icon"></i>
     </div>
-    <div class="list-item">
+    <div class="list-item" @click="memberClick">
       <div class="item-img">
         <img src="~assets/img/profile/member.svg" alt="">
       </div>
       <span class="item-info">{{listData[2]}}</span>
       <i class="item-icon"></i>
     </div>
-    <div class="list-item">
+    <div class="list-item" @click="serviceClick">
       <div class="item-img">
         <img src="~assets/img/profile/service.svg" alt="">
       </div>
       <span class="item-info">{{listData[3]}}</span>
       <i class="item-icon"></i>
     </div>
-    <div class="list-item">
+    <div class="list-item" @click="setupClick">
       <div class="item-img">
         <img src="~assets/img/profile/setup.svg" alt="">
       </div>
@@ -52,6 +52,56 @@ export default {
       ]
     }
   },
+  methods: {
+    orderTo () {
+      if (localStorage.eleToken) {
+        this.$router.push('/order')
+      } else {
+        this.$message({
+          message: '您还未登录',
+          type: 'error',
+          offset: 1,
+          duration: 2000
+        })
+      }
+    },
+    integralClick () {
+      this.$message({
+        message: '建设中！！！',
+        type: 'warning',
+        offset: 1,
+        showClose: true,
+        duration: 2000
+      })
+    },
+    memberClick () {
+      this.$message({
+        message: '建设中！！！',
+        type: 'warning',
+        offset: 1,
+        showClose: true,
+        duration: 2000
+      })
+    },
+    serviceClick () {
+      this.$message({
+        message: '建设中！！！',
+        type: 'warning',
+        offset: 1,
+        showClose: true,
+        duration: 2000
+      })
+    },
+    setupClick () {
+      this.$message({
+        message: '建设中！！！',
+        type: 'warning',
+        offset: 1,
+        showClose: true,
+        duration: 2000
+      })
+    }
+  }
 }
 </script>
 

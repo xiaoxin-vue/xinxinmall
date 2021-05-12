@@ -11,6 +11,9 @@ const Register = () => import('views/register/Register')
 const notFound = () => import('views/notFound/NotFound')
 const Search = () => import('views/search/Search')
 const Wall = () => import('views/wall/Wall')
+const Order = () => import('views/order/Order')
+const Pay = () => import('views/pay/Pay')
+const BuyNow = () => import('views/pay/BuyNow')
 
 // 1.安装插件
 Vue.use(VueRouter)
@@ -57,6 +60,18 @@ const routes = [
   {
     path: '/wall',
     component: Wall
+  },
+  {
+    path: '/order',
+    component: Order
+  },
+  {
+    path: '/pay',
+    component: Pay
+  },
+  {
+    path: '/buynow',
+    component: BuyNow
   },
   {
     path: '*',

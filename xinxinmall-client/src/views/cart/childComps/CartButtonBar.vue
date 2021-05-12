@@ -5,7 +5,14 @@
       <span class="select-all">全选</span>
     </div>
     <div class="total-price">合计:￥{{totalPrice}}</div>
-    <div class="calculate" @click="calcClick">去计算({{checkedCartListLength}})</div>
+    <div class="calculate" 
+      @click="calcClick"
+      :class="{active: isActive}"
+      @touchstart="changeActive1" 
+      @touchend="changeActive2"
+    >
+      提交订单({{checkedCartListLength}})
+    </div>
   </div>
 </template>
 
@@ -17,15 +24,22 @@ import {mapGetters} from 'vuex'
 export default {
   name: 'CartButtonBar',
   components: {
-    CheckButton 
+    CheckButton
   },
   computed: {
     ...mapGetters([
       'checkedCartListLength',
       'totalPrice',
       'isSelectAll',
-      'isNotSelectAll'
+      'isNotSelectAll',
+      'cartList',
+      'user'
     ])
+  },
+  data() {
+    return {
+      isActive: false
+    }
   },
   methods: {
     checkedAll() {
@@ -35,9 +49,42 @@ export default {
       if(this.isNotSelectAll) {
         // 使用toast组件
         this.$toast.show('请选择购买的商品');
+      } else {
+        const param = {
+          name: this.user.name,
+          goods: this.cartList
+        }
+        this.$axios({
+          method: 'post',
+          url: 'api/orders/add',
+          data: param, // 传递json字段时，需要加头部'Content-Type': 'application/json', 后端 req.body 接收
+          params: {
+            id: this.user.id  // ?id=XXX 参数 后端 req.query 接收
+          },
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(res => {
+          console.log(res)
+          this.$message({
+            message: '提交订单成功',
+            type: 'success',
+            offset: 1,
+            duration: 2000
+          })
+        })
+        setTimeout(() => {
+          location.reload()
+        }, 500)
       }
+    },
+    changeActive1() {
+      this.isActive = true;
+    },
+    changeActive2() {
+      this.isActive = false;
     }
-  },
+  }
 }
 </script>
 
@@ -45,7 +92,7 @@ export default {
 .botton-bar {
   display: flex;
   width: 100%;
-  height: 40px;
+  height: 42px;
   padding-left: 10px;
   box-shadow: 0 -2px 3px rgba(100, 100, 100, 0.2);
   background-color: pink;
@@ -80,5 +127,9 @@ export default {
   color: #fff;
   text-align: center;
   line-height: 40px;
+}
+
+.botton-bar .active {
+  background-color: rgba(255, 0, 0, 0.4);
 }
 </style>

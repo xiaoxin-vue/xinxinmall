@@ -5,7 +5,7 @@
     </nav-bar>
 
     <!-- 用户信息 -->
-    <user-info :userInfo="userInfoName || user"/>
+    <user-info :userInfo="user"/>
 
     <!-- 账户信息 -->
     <account-info/>
@@ -13,7 +13,12 @@
     <!-- 菜单列表 -->
     <list-view/>
 
-    <div class="exit" @click="exit">退出当前账号</div>
+    <div class="exit"
+      @click="exit"
+      :class="{active: isActive}"
+      @touchstart="changeActive1" 
+      @touchend="changeActive2"
+    >退出当前账号</div>
   </div>
 </template>
 
@@ -38,7 +43,8 @@ export default {
   },
   data() {
     return {
-      userInfoName: {}
+      userInfoName: {},
+      isActive: false
     }
   },
   created() {
@@ -73,7 +79,8 @@ export default {
         localStorage.removeItem('eleToken') 
         this.$message({
           message: '退出账号成功',
-          type: 'success'
+          type: 'success',
+          offset: 1
         })
         // 强制刷新页面
         setTimeout(() => {
@@ -82,7 +89,8 @@ export default {
       } else {
         this.$message({
           message: '账号已退出',
-          type: 'success'
+          type: 'success',
+          offset: 1
         })
       }
     },
@@ -93,6 +101,12 @@ export default {
         (typeof value === "object" && Object.keys(value).length === 0) ||
         (typeof value === "string" && value.trim().length === 0)
       )
+    },
+    changeActive1() {
+      this.isActive = true;
+    },
+    changeActive2() {
+      this.isActive = false;
     }
   }
 }
@@ -117,5 +131,9 @@ export default {
   font-weight: 600;
   line-height: 40px;
   text-align: center;
+}
+
+.active {
+  background-color: rgba(239,79,79, 0.5);
 }
 </style>

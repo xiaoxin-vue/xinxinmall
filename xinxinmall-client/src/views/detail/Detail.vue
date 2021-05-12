@@ -11,7 +11,7 @@
       <goods-list ref="recommend" :goods="recommendInfo"/>
     </scroll>
     <back-top @click.native="backClick" v-show="isShowBackTop"/>
-    <detail-button-bar @addToCart="addToCart"/>
+    <detail-button-bar @addToCart="addToCart" @payClick11="payClick12"/>
   </div>
 </template>
 
@@ -50,7 +50,9 @@ export default {
       recommendInfo: [],
       themeTopYs: [],
       positionY: 0,
-      currentIndex: 0
+      currentIndex: 0,
+      userInfo: {},
+      goodInfo: {}
     }
   },
   components: {
@@ -170,7 +172,33 @@ export default {
         console.log(res);
       })
       */
+    },
+    payClick12 (value) {
+      this.goodsInfo = value.goodsInfo
+      this.userInfo = value.userInfo
     }
+  },
+  beforeDestroy () {
+    console.log('销毁前')
+    // console.log(this.goodInfo)
+    // this.$bus.$emit('payClick12', this.goodInfo)
+
+    const param = {
+      name: this.userInfo.name,
+      goods: this.goodsInfo
+    }
+    console.log(param)
+    this.$axios({
+      method: 'post',
+      url: 'api/orders/add',
+      data: param, // 传递json字段时，需要加头部'Content-Type': 'application/json', 后端 req.body 接收
+      params: {
+        id: this.userInfo.id // ?id=XXX 参数 后端 req.query 接收
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 }
 </script>

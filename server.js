@@ -2,12 +2,15 @@ const express = require('express')
 const mongoose = require('mongoose')
 const passport = require('passport')
 
+mongoose.set('useFindAndModify', false)
+
 // DB config
 const db = require('./config/keys').mongoUrl
 
 // 引入users.js
 const users = require('./routes/api/users')
 const profiles = require('./routes/api/profiles')
+const orders = require('./routes/api/orders')
 
 // connect to mongoDB
 mongoose.connect(db)
@@ -30,6 +33,7 @@ require('./config/passport')(passport)
 // 使用router
 app.use('/api/users', users)
 app.use('/api/profiles', profiles)
+app.use('/api/orders', orders)
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {

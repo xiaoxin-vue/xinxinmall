@@ -70,13 +70,18 @@ export default {
                      .then(res => {
                        this.$message({
                         message: '登录账号成功',
-                        type: 'success'
-                      })
+                        type: 'success',
+                        offset: 1,
+                        duration: 2000
+                       })
                        const { token } = res.data
                        //localStorage.setItem() 存储token
                        // 把token存储到localStorage中的eleToken
                        localStorage.setItem('eleToken', token)
                        this.$router.push('/profile')
+                       setTimeout(() => {
+                         location.reload();
+                       }, 500)
                      })
                      .catch(err => {
                        throw err

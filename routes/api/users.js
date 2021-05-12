@@ -18,12 +18,13 @@ const passport = require('passport')
 // @desc 返回请求的json数据
 // @access public
 router.post('/register', (req, res) =>{
-  // console.log(req.body);
+  console.log(req.body);
   //查询数据库是否拥有邮箱
   User.findOne({email: req.body.email})
       .then((user) => {
         if(user) {
-          return res.status(400).json({email: '邮箱已被注册！'})
+          console.log('safds')
+          res.status(404).json({msg: '邮箱已被注册！'})
         }else {
           const avatar = gravatar.url(req.body.email, {s: '200', r: 'pg', d: 'mm'});
           const newUser = new User({

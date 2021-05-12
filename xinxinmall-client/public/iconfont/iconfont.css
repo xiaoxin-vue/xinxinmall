@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2424425 */
-  src: url('iconfont.woff2?t=1620221801028') format('woff2'),
-       url('iconfont.woff?t=1620221801028') format('woff'),
-       url('iconfont.ttf?t=1620221801028') format('truetype');
+  src: url('iconfont.woff2?t=1620633026872') format('woff2'),
+       url('iconfont.woff?t=1620633026872') format('woff'),
+       url('iconfont.ttf?t=1620633026872') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,58 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixuanzhong:before {
+  content: "\e6cf";
+}
+
+.icon-xuanzhong:before {
+  content: "\e65c";
+}
+
+.icon-yinhanglogo-:before {
+  content: "\e97f";
+}
+
+.icon-yinhanglogo-1:before {
+  content: "\e983";
+}
+
+.icon-jiansheyinhang:before {
+  content: "\e613";
+}
+
+.icon-tubiao_zhifu-yinhangkazhifu-95:before {
+  content: "\e690";
+}
+
+.icon-zhifubao:before {
+  content: "\e629";
+}
+
+.icon-balance:before {
+  content: "\e618";
+}
+
+.icon-weixinzhifu:before {
+  content: "\e607";
+}
+
+.icon-cong:before {
+  content: "\e7ee";
+}
+
+.icon-remen:before {
+  content: "\e648";
+}
+
+.icon-shanchu:before {
+  content: "\e6d0";
+}
+
+.icon-sousuo:before {
+  content: "\e647";
 }
 
 .icon-liebiao1:before {

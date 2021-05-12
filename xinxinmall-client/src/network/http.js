@@ -24,6 +24,7 @@ axios.interceptors.request.use(
   startLoading()
 
   // 设置统一的请求头
+  // console.log(localStorage.eleToken)
   if(localStorage.eleToken) config.headers.Authorization = localStorage.eleToken 
 
   return config
@@ -42,7 +43,13 @@ axios.interceptors.response.use(
 }, error => {
   // 结束加载动画
   endLoading()
-  Message.error(error.response.data.msg)
+  console.log(error.response.data.msg)
+  Message({
+    message: error.response.data.msg,
+    type: 'error',
+    offset: 1,
+    duration: 2000
+  })
 
   const { status } = err.response
   // 获取错误状态码

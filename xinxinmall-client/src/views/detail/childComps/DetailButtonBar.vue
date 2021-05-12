@@ -22,6 +22,7 @@
            @touchend="changeActive2"
            >加入购物车</div>
       <div class="buy"
+           @click="payClick11"
            :class="{active1: isActive1}"
            @touchstart="changeActive3" 
            @touchend="changeActive4">立即购买</div>
@@ -30,18 +31,91 @@
 </template>
 
 <script>
+import { getDetail, Goods } from 'network/detail'
+
+import jwt_decode from "jwt-decode"
+
 export default {
   name: 'DetailButtonBar',
   data() {
     return {
       isActive: false,
       isActive1: false,
-      isSelect: false
+      isSelect: false,
+      goodsId: '',
+      goodsInfo: {},
+      topImages: [],
+      userInfo: {},
+      count: 0
     }
+  },
+  created() {
+    if(localStorage.eleToken) {
+      // 解析token
+      const decoded = jwt_decode(localStorage.eleToken)
+      this.userInfo = decoded
+    }
+
+    console.log(this.$route.params.iid)
+    this.goodsId = this.$route.params.iid
+
+    getDetail(this.goodsId).then(res => {
+      // 1.获取商品信息
+      this.goods = new Goods(res.data.result.itemInfo, res.data.result.columns, res.data.result.shopInfo.services)
+      this.topImages = res.data.result.itemInfo.topImages
+
+      this.goodsInfo = {}
+      this.goodsInfo.image = this.topImages[0]
+      this.goodsInfo.title = this.goods.title
+      this.goodsInfo.desc = this.goods.desc
+      this.goodsInfo.price = this.goods.realPrice
+      this.goodsInfo.iid = this.goodsId
+      console.log(this.goodsInfo)
+    })
   },
   methods: {
     addToCart() {
       this.$emit('addToCart');
+    },
+    payClick11 () {
+      console.log('点击购买')
+      console.log(this.goodsInfo)
+      // this.$emit('payClick11', {
+      //   goodsInfo: this.goodsInfo,
+      //   userInfo: this.userInfo
+      // })
+
+      const param = {
+        name: this.userInfo.name,
+        goods: this.goodsInfo
+      }
+      console.log(param)
+      this.$axios({
+        method: 'post',
+        url: 'api/orders/add',
+        data: param, // 传递json字段时，需要加头部'Content-Type': 'application/json', 后端 req.body 接收
+        params: {
+          id: this.userInfo.id // ?id=XXX 参数 后端 req.query 接收
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then(res => {
+        console.log(res)
+        this.$message({
+          message: '提交订单成功',
+          type: 'success',
+          offset: 1,
+          duration: 2000
+        })
+      })
+
+      this.$router.push({
+        path: '/pay',
+        query: {
+          iid: this.goodsId
+        }
+      })
     },
     changeActive1() {
       this.isActive = true;

@@ -79,15 +79,18 @@ export default {
         if (valid) {
           this.$axios.post('/api/users/register', this.registerUser)
                      .then(res => {
+                       console.log(res)
                        // 注册成功
                        this.$message({
                          message: '账号注册成功',
-                         type: 'success'
+                         type: 'success',
+                         offset: 1,
+                         duration: 2000
                        })
                        this.$router.push('/login')
                      })
                      .catch(err => {
-                       this.$message.error(err.response.data.email)
+                       throw err
                      })
         } else {
           console.log('error submit!!');
