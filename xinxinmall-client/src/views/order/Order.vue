@@ -112,6 +112,13 @@ export default {
       this.isActive = false;
     }
   }
+  // watch: {
+  //   orderGoods (newflag, oldFlag) {
+  //     console.log(newflag)
+  //     console.log(oldFlag)
+  //     this.orderGoods = newflag
+  //   }
+  // }
 }
 </script>
 

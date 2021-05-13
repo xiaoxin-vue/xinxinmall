@@ -80,36 +80,38 @@ export default {
     payClick11 () {
       console.log('点击购买')
       console.log(this.goodsInfo)
-      // this.$emit('payClick11', {
-      //   goodsInfo: this.goodsInfo,
-      //   userInfo: this.userInfo
-      // })
+      this.$emit('payClick11', {
+        goodsInfo: this.goodsInfo,
+        userInfo: this.userInfo
+      })
 
       const param = {
         name: this.userInfo.name,
         goods: this.goodsInfo
       }
       console.log(param)
-      this.$axios({
-        method: 'post',
-        url: 'api/orders/add',
-        data: param, // 传递json字段时，需要加头部'Content-Type': 'application/json', 后端 req.body 接收
-        params: {
-          id: this.userInfo.id // ?id=XXX 参数 后端 req.query 接收
-        },
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).then(res => {
-        console.log(res)
-        this.$message({
-          message: '提交订单成功',
-          type: 'success',
-          offset: 1,
-          duration: 2000
-        })
-      })
-
+        // this.$axios({
+        //   method: 'post',
+        //   url: 'api/orders/add',
+        //   data: param, // 传递json字段时，需要加头部'Content-Type': 'application/json', 后端 req.body 接收
+        //   params: {
+        //     id: this.userInfo.id // ?id=XXX 参数 后端 req.query 接收
+        //   },
+        //   headers: {
+        //     'Content-Type': 'application/json'
+        //   }
+        // }).then(res => {
+        //     console.log(res)
+        //     this.$message({
+        //       message: '提交订单成功',
+        //       type: 'success',
+        //       offset: 1,
+        //       duration: 2000
+        //     })
+        //   })
+        //   .catch(err => {
+        //     console.log(err)
+        //   })
       this.$router.push({
         path: '/pay',
         query: {

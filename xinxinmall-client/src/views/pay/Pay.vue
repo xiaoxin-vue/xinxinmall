@@ -167,9 +167,9 @@ export default {
   },
   activated () {
     console.log('活跃后')
-    this.$bus.$on('paidClick', msg => {
-      this.goodInfo = msg
-    })
+    // this.$bus.$on('payClick12', msg => {
+    //   console.log(msg)
+    // })
     // 获取url中的iid
     this.goodId = this.$route.query.iid
 
@@ -262,6 +262,13 @@ export default {
     },
     changeActive1End () {
       this.isActive1 = false;
+    }
+  },
+  watch: {
+    goodInfo(newValue, oldValue) {
+      console.log(newValue);
+      console.log(oldValue);
+      this.goodInfo = newValue
     }
   }
 }

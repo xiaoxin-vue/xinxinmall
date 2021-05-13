@@ -25,7 +25,7 @@ router.post('/add', passport.authenticate('jwt', {session: false}), (req, res) =
   Order.findOne({name: orderFields.name})
   .then(o => {
     console.log('kkkks')
-    console.log  (o)
+    console.log(o)
     if (o) {
       console.log('推进的订单');
       Order.findOneAndUpdate({name: orderFields.name}, {$push: {"goods": orderFields.goods}})
@@ -68,7 +68,7 @@ router.post('/add', passport.authenticate('jwt', {session: false}), (req, res) =
 // @desc 创建信息接口
 // @access private
 router.get('/currentUserOrder', passport.authenticate('jwt', {session: false}), (req, res) => {
-  console.log(req.query.name)
+  // console.log(req.query.name, 'sadf')
   Order.find({name: req.query.name})
        .then((orders) => {
          res.send(orders)

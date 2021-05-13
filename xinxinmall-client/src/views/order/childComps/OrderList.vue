@@ -51,6 +51,16 @@ export default {
     this.$refs.scroll.refresh()
   },
   activated() {
+    this.$axios({
+      method: 'get',
+      url: 'api/orders/currentUserOrder',
+      params: {
+        name: this.userInfo.name  // ?id=XXX 参数 后端 req.query 接收
+      }
+    }).then(res => {
+      this.orderList = res.data[0].goods
+      this.$refs.scroll.refresh()
+    })
     this.$refs.scroll.refresh()
   }
 }

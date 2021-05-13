@@ -180,8 +180,8 @@ export default {
   },
   beforeDestroy () {
     console.log('销毁前')
-    // console.log(this.goodInfo)
-    // this.$bus.$emit('payClick12', this.goodInfo)
+    console.log(this.goodInfo)
+    this.$bus.$emit('payClick12', this.goodInfo)
 
     const param = {
       name: this.userInfo.name,
@@ -199,6 +199,7 @@ export default {
         'Content-Type': 'application/json'
       }
     })
+    console.log('添加成功')
   }
 }
 </script>
