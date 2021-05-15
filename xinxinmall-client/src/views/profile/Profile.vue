@@ -4,21 +4,23 @@
       <div slot="center">我的</div>
     </nav-bar>
 
-    <!-- 用户信息 -->
-    <user-info :userInfo="user"/>
+    <div class="profile-container">
+      <!-- 用户信息 -->
+      <user-info :userInfo="user"/>
 
-    <!-- 账户信息 -->
-    <account-info/>
+      <!-- 账户信息 -->
+      <account-info/>
 
-    <!-- 菜单列表 -->
-    <list-view/>
+      <!-- 菜单列表 -->
+      <list-view/>
 
-    <div class="exit"
-      @click="exit"
-      :class="{active: isActive}"
-      @touchstart="changeActive1" 
-      @touchend="changeActive2"
-    >退出当前账号</div>
+      <div class="exit"
+        @click="exit"
+        :class="{active: isActive}"
+        @touchstart="changeActive1" 
+        @touchend="changeActive2"
+      >退出当前账号</div>
+    </div>
   </div>
 </template>
 
@@ -120,6 +122,13 @@ export default {
 .nav-bar {
   background-color: var(--color-tint);
   color: #fff;
+  font-size: 14px;
+}
+
+.profile-container {
+  width: 100%;
+  height: calc(100% - 89px);
+  overflow: auto;
 }
 
 .exit {
@@ -131,6 +140,7 @@ export default {
   font-weight: 600;
   line-height: 40px;
   text-align: center;
+  font-size: 14px;
 }
 
 .active {

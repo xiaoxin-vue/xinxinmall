@@ -138,6 +138,7 @@ export default {
   height: 40px;
   border-top: 1px solid #ccc;
   box-shadow: 0px 1px 2px #ccc;
+  font-size: 14px;
 }
 
 .screen>ul {

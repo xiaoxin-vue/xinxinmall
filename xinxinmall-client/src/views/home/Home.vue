@@ -288,6 +288,11 @@ export default {
   justify-content: space-around;
   width: 100%;
   height: 100%;
+  font-size: 14px;
+}
+
+.left-info .text {
+  font-size: 12px;
 }
 
 .text,

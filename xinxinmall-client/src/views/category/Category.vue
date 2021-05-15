@@ -167,6 +167,7 @@ export default {
 .category-nav {
   background-color: var(--color-tint);
   color: #fff;
+  font-size: 14px;
 }
 
 .category-content {

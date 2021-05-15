@@ -84,5 +84,6 @@ export default {
 
 .right-search {
   text-align: center;
+  font-size: 14px;
 }
 </style>

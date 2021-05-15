@@ -25,5 +25,6 @@ export default {
 
 .back-top h5 {
   color: rgba(255, 48, 48, 0.6);
+  font-size: 14px;
 }
 </style>

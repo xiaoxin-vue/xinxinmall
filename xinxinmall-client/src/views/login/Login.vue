@@ -110,6 +110,10 @@ export default {
   height: 60%;
 }
 
+.manage_tip {
+  width: 100%;
+}
+
 .back {
   width: 22px;
   padding-top: 5px;
@@ -127,6 +131,7 @@ export default {
 
 .loginForm {
   margin-top: 50px;
+  font-size: 14px;
 }
 
 .submit_btn {

@@ -46,6 +46,7 @@ export default {
 
 .tab-control-item {
   flex: 1;
+  font-size: 14px;
 }
 
 .tab-control-item span {

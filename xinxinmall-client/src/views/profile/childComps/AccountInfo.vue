@@ -32,6 +32,7 @@ export default {
   display: flex;
   padding: 15px 10px;
   border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+  font-size: 14px;
 }
 
 .account-item {
