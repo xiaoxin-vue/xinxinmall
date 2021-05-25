@@ -11,6 +11,11 @@ const db = require('./config/keys').mongoUrl
 const users = require('./routes/api/users')
 const profiles = require('./routes/api/profiles')
 const orders = require('./routes/api/orders')
+const multidata = require('./routes/api/multidata')
+const home = require('./routes/api/home')
+const category = require('./routes/api/category')
+const detail = require('./routes/api/detail')
+const recommend = require('./routes/api/recommend')
 
 // connect to mongoDB
 mongoose.connect(db)
@@ -34,6 +39,11 @@ require('./config/passport')(passport)
 app.use('/api/users', users)
 app.use('/api/profiles', profiles)
 app.use('/api/orders', orders)
+app.use('/api/m5/Home', multidata)
+app.use('/api/m5/Home', home)
+app.use('/api/m5/category', category)
+app.use('/api/m5/detail', detail)
+app.use('/api/m5/recommend', recommend)
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {
